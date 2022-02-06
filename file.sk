@@ -1,0 +1,36 @@
+on damage:
+	if {damage} is set:
+		if victim is player:
+			cancel event
+		
+		
+command /event [<text>]:
+	trigger:
+		if sender has permission "event.event":
+			if arg-1 is set:
+				if arg-1 is "start":
+					brodcast "&aThe event has started! You have 30 minutes to gather resources!"
+					set {damage} to "true"
+					wait 25 minutes
+					broadcast "&c5 minutes remaining!"
+					wait 1 minutes
+					broadcast "&c4 minutes remaining!"
+					wait 1 minutes
+					broadcast "&c3 minutes remaining!"
+					wait 1 minutes
+					broadcast "&c2 minutes remaining!"
+					wait 1 minutes
+					broadcast "&c1 minutes remaining!"
+					wait 1 minutes
+					broadcast "&4&lPVP IS NOW ENABLED!"
+					delete {damage}
+					stop
+				else:
+					send "&cCommands /event start" to player
+					stop
+			else:
+				send "&cCommands /event start" to player
+				stop
+		else:
+			send "&cNo permission!" to player
+			stop
